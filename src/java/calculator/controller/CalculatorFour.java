@@ -77,6 +77,8 @@ public class CalculatorFour extends HttpServlet {
         CircleCalculatorService circ = new CircleCalculatorService();
         TriangleCalculatorService tri = new TriangleCalculatorService();
         String destination = RESULT_PAGE;
+        String title = null;
+        String calculation = null;
         String width, height, action, result;
         try
         {
@@ -84,21 +86,29 @@ public class CalculatorFour extends HttpServlet {
             action = request.getParameter("action");
             if(action.equals(ACTION_RECT))
             {
+                title = "Rectangle Calculation";
+                calculation = "Length * Width";
                 width = request.getParameter("width");
                 height = request.getParameter("height");
                 result = rect.calculateArea(width, height).toPlainString();
             }
             if(action.equals(ACTION_CIRC))
             {
+                title = "Circle Calculation";
+                calculation = "(Radius^2)*π";
                 width = request.getParameter("width");
                 result = circ.calculateArea(width).toPlainString();
             }
             if(action.equals(ACTION_TRI))
             {
+                title = "Triangle Calculation";
+                calculation = "(base * height)/2";
                 width = request.getParameter("width");
                 height = request.getParameter("height");
                 result = tri.calculateArea(width, height).toPlainString();
             }
+            request.setAttribute("title", title);
+            request.setAttribute("calculation", calculation);
             request.setAttribute("result", result);
         }
         catch(Exception e)

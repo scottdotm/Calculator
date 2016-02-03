@@ -54,7 +54,7 @@
                 <form id="triForm" method="POST" action="calc4?action=tri">
                     <h4 class="col m4">Triangle</h4>
                     <div class="input-field col m4">
-                        <label for="width">Width</label>
+                        <label for="width">Base</label>
                         <input type="number" name="width" id="width" required="required" />
                     </div>
                     <div class="input-field col m4">
@@ -64,6 +64,8 @@
                     <button class="btn right waves-effect" type="submit">Calculate</button>
                 </form>
             </div>
+                <h3 id="output">Calculated: ${title}</h3>
+                <h3 id="output">Calculation: ${calculation}</h3>
                 <h3 id="output">Calculated value: ${result}</h3>
             </div>
             <footer class="footer">
